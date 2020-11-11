@@ -65,6 +65,8 @@ define( 'NONCE_SALT',       'a4414ee38c3fb4bf105e767f57d7dbd001e7974d');
  */
 $table_prefix = 'wp_';
 
+define('WP_ENV', 'LOCAL');
+
 /**
  * For developers: WordPress debugging mode.
  *
