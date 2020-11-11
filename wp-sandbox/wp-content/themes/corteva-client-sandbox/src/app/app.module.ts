@@ -4,20 +4,22 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TestComponent } from './test/test.component';
 import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
-import { HomeComponent } from './home/home.component';
-import { PagesListComponent } from './pages-list/pages-list.component';
-import { PostsListComponent } from './posts-list/posts-list.component';
+import { WindowService } from './services/window.service';
+import { RestAPIService } from './services/rest-api.service';
+import { PostListComponent } from './components/post-list/post-list.component';
+import { PostListSingleComponent } from './components/post-list-single/post-list-single.component';
+import { PostSingleComponent } from './components/post-single/post-single.component';
+import { PageComponent } from './components/page/page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
-    HomeComponent,
-    PagesListComponent,
-    PostsListComponent
+    PostListComponent,
+    PostListSingleComponent,
+    PostSingleComponent,
+    PageComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,8 @@ import { PostsListComponent } from './posts-list/posts-list.component';
   providers: [
     HttpErrorHandler,
     MessageService,
+    WindowService,
+    RestAPIService
   ],
   bootstrap: [AppComponent]
 })

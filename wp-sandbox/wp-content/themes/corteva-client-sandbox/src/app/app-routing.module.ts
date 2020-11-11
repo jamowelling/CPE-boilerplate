@@ -1,14 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { HomeComponent } from './home/home.component';
-import { PagesListComponent } from './pages-list/pages-list.component';
-import { PostsListComponent } from './posts-list/posts-list.component';
+import { PostListComponent } from './components/post-list/post-list.component';
+import { PostSingleComponent } from './components/post-single/post-single.component';
+import { PageComponent } from './components/page/page.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'pages', component: PagesListComponent },
-  { path: 'posts', component: PostsListComponent },
+  {
+    path: '',
+    component: PostListComponent
+  },
+  {
+    path: 'posts/:id',
+    component: PostSingleComponent
+  },
+  {
+    path: 'pages/:id',
+    component: PageComponent
+  }
 ];
 
 @NgModule({
