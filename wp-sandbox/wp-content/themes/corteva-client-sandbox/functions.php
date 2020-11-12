@@ -60,3 +60,26 @@ function angular_remove_redirect() {
 		remove_filter( 'template_redirect', 'redirect_canonical' );
 	}
 }
+
+/**
+ * Customize the preview button in the WordPress admin to point to the headless client.
+ *
+ * @param  str $link The WordPress preview link.
+ * @return str The headless WordPress preview link.
+ */
+function set_headless_preview_link( $link ) {
+	if (defined( 'WP_ENV' ) && 'LOCAL' === WP_ENV ) {
+		return 'http://localhost:4200/'
+			. '_preview/'
+            . get_the_ID() . '/'
+            . wp_get_post_parent_id(get_the_id()) . '/'
+			. wp_create_nonce( 'wp_rest' );
+	} else {
+		return 'https://<your_production_url>/'
+			. '_preview/'
+			. get_the_ID() . '/'
+			. wp_create_nonce( 'wp_rest' );
+	}
+}
+
+add_filter( 'preview_post_link', 'set_headless_preview_link' );

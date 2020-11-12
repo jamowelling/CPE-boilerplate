@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { PostSingleComponent } from './components/post-single/post-single.component';
 import { PageComponent } from './components/page/page.component';
+import { PreviewComponent } from './components/preview/preview.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'pages/:id',
     component: PageComponent
+  },
+  {
+    path: '_preview/:id/:parentId/:wpnonce',
+    component: PreviewComponent
   }
 ];
 

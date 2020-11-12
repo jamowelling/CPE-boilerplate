@@ -12,6 +12,7 @@ import { PostListComponent } from './components/post-list/post-list.component';
 import { PostListSingleComponent } from './components/post-list-single/post-list-single.component';
 import { PostSingleComponent } from './components/post-single/post-single.component';
 import { PageComponent } from './components/page/page.component';
+import { PreviewComponent } from './components/preview/preview.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PageComponent } from './components/page/page.component';
     PostListComponent,
     PostListSingleComponent,
     PostSingleComponent,
-    PageComponent
+    PageComponent,
+    PreviewComponent
   ],
   imports: [
     BrowserModule,

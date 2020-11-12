@@ -25,5 +25,10 @@ export class RestAPIService {
   }
 
   getPageBySlug(page_id) {
-    return this.http.get(this.api_url + 'pages/?slug=' + page_id)}
+    return this.http.get(this.api_url + 'pages/?slug=' + page_id)
+  }
+
+  getPreview(page_id, parent_id, wpnonce) {
+    return this.http.get(this.api_url + `pages/${parent_id}/revisions?_wpnonce=${wpnonce}`, {withCredentials: true})
+  }
 }
