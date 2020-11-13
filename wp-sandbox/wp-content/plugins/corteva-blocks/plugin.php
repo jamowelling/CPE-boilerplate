@@ -23,6 +23,7 @@ require_once plugin_dir_path( __FILE__ ) . 'src/init.php';
  */
 function my_block_plugin_editor_scripts() {
 	// Enqueue block editor JS
+	// TODO - currently a placeholder example until angular elements are set up
     wp_enqueue_script(
         'app-hello-world',
         'http://127.0.0.1:8080/angular-elements/hello-world-angular-element.js',
