@@ -1,3 +1,12 @@
+## Before you start
+in order to run this project, make sure you have docker and then global Angular CLI installed on your machine
+
+Docker: 
+https://docs.docker.com/compose/install/
+
+Angular CLI: 
+https://cli.angular.io/
+
 ## Client
 ```bash
 yarn
