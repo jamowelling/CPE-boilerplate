@@ -30,7 +30,11 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              {
+                "input": "node_modules/@ungap/custom-elements/es.js"
+              }
+            ]
           },
           "configurations": {
             "production": {
