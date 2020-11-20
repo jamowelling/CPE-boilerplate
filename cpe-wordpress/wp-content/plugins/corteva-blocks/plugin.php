@@ -26,7 +26,7 @@ function my_block_plugin_editor_scripts() {
 	// TODO - currently a placeholder example until angular elements are set up
     wp_enqueue_script(
         'app-hello-world',
-        'http://127.0.0.1:8080/angular-elements/hello-world-angular-element.js',
+        'http://127.0.0.1:58020/angular-elements/hello-world-angular-element.js',
         array(),
         '4.3.1',
         true
@@ -34,3 +34,17 @@ function my_block_plugin_editor_scripts() {
 }
 // Hook the enqueue functions into the editor
 add_action( 'enqueue_block_editor_assets', 'my_block_plugin_editor_scripts' );
+
+/**
+ * Enqueue frontend and editor JavaScript and CSS
+ */
+function enqueue_frontend() {
+    if ( is_admin() ) {
+       return;
+    }
+   
+    wp_enqueue_script( 'app-hello-world', 'http://127.0.0.1:58020/angular-elements/hello-world-angular-element.js', array(), '4.3.1', true );
+
+}
+
+add_action( 'wp_enqueue_scripts', 'enqueue_frontend' );

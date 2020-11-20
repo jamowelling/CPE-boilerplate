@@ -10,3 +10,4 @@
  */
 
 import './sample-block/block.js';
+import './article-block/block.js';

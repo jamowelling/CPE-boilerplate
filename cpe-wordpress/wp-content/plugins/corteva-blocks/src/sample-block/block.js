@@ -27,7 +27,7 @@ const {
 } = wp.editor;
 registerBlockType( 'cgb/block-my-block', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'PE Sample Block' ), // Block title.
+	title: __( 'CPE Sample Block' ), // Block title.
 	icon: 'buddicons-replies', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
@@ -39,7 +39,7 @@ registerBlockType( 'cgb/block-my-block', {
 	attributes: {
 		inputValue: {
 			type: 'string',
-			default: ''
+			default: '',
 		},
 	},
 	/**
@@ -54,21 +54,19 @@ registerBlockType( 'cgb/block-my-block', {
 	 * @returns {Mixed} JSX Component.
 	 */
 	edit: ( props ) => {
-
 		return (
 			<div className={ props.className }>
-				<h3>— Hello from the backend.</h3>
+				<h3>— Hello from the backend!.</h3>
 				<p>Add text to the input below and preview the page to get a sense for how information is posted</p>
 				<RichText
-					autoFocus="false"
 					className="btn btn--primary"
-					value={props.attributes.inputValue}
+					value={ props.attributes.inputValue }
 					placeholder="Place Sample Text"
 					onChange={
-						// notice, rather than taking in an event as the first argument it takes in 'value' 
-						(value) => props.setAttributes({ inputValue: value })
+						// notice, rather than taking in an event as the first argument it takes in 'value'
+						( value ) => props.setAttributes( { inputValue: value } )
 					}
-				/>	
+				/>
 			</div>
 		);
 	},
@@ -86,8 +84,8 @@ registerBlockType( 'cgb/block-my-block', {
 	save: ( props ) => {
 		return (
 			<div className={ props.className }>
-				<p>— Hello from the frontend.</p>
-				<p>{props.attributes.inputValue}</p>
+				<p>— Hello from the frontend. !</p>
+				<p>{ props.attributes.inputValue }</p>
 			</div>
 		);
 	},
