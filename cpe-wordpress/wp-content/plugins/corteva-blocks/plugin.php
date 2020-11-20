@@ -26,7 +26,7 @@ function my_block_plugin_editor_scripts() {
 	// TODO - currently a placeholder example until angular elements are set up
     wp_enqueue_script(
         'app-hello-world',
-        'http://127.0.0.1:8080/angular-elements/hello-world-angular-element.js',
+        'http://127.0.0.1:45571/angular-elements/hello-world-angular-element.js',
         array(),
         '4.3.1',
         true
@@ -34,3 +34,17 @@ function my_block_plugin_editor_scripts() {
 }
 // Hook the enqueue functions into the editor
 add_action( 'enqueue_block_editor_assets', 'my_block_plugin_editor_scripts' );
+
+function corteva_blocks_cgb_block_categories( $categories, $post ) {
+	return array_merge(
+		array(
+			array(
+				'slug' => 'corteva',
+				'title' => __( 'Corteva', 'corteva_blocks_cgb' ),
+			),
+		),
+		$categories
+	);
+}
+
+add_filter( 'block_categories', 'corteva_blocks_cgb_block_categories', 10, 2 );

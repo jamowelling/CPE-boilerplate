@@ -1,4 +1,4 @@
 <article *ngIf="page" id="page-{{page.id}}">
     <h2 class="red" [innerHTML]="page.title.rendered"></h2>
-    <div [innerHTML]="page.content.rendered"></div>
+    <div [innerHTML]="page.content.rendered | keepHtml"></div>
 </article>
