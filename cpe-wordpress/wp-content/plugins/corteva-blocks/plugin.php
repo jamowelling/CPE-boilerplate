@@ -46,5 +46,4 @@ function corteva_blocks_cgb_block_categories( $categories, $post ) {
 		$categories
 	);
 }
-
 add_filter( 'block_categories', 'corteva_blocks_cgb_block_categories', 10, 2 );
