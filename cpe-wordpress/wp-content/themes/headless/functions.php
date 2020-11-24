@@ -61,6 +61,38 @@ function angular_remove_redirect() {
 	}
 }
 
+// Workaround script until there's an official solution for https://github.com/WordPress/gutenberg/issues/13998
+  function fix_preview_link_on_draft() {
+    echo '<script type="text/javascript">
+      jQuery(document).ready(function () {
+        const checkPreviewInterval = setInterval(checkPreview, 1000);
+        function checkPreview() {
+          const editorPreviewButton = jQuery(".edit-post-header-preview__button-external");
+          const editorPostSaveDraft = jQuery(".editor-post-save-draft");
+          if (editorPreviewButton.length && editorPreviewButton.attr("href") !== "' . set_headless_preview_link('') . '" ) {
+            editorPreviewButton.attr("href", "' . set_headless_preview_link('') . '");
+            editorPreviewButton.off();
+            editorPreviewButton.click(false);
+            editorPreviewButton.on("click", function() {
+              editorPostSaveDraft.click();
+              setTimeout(function() { 
+                const win = window.open("' . set_headless_preview_link('') . '", "_blank");
+                if (win) {
+                  win.focus();
+                }
+              }, 1000);
+            });
+          }
+        }
+      });
+    </script>';
+  }
+  
+add_action( 'admin_footer-edit.php', 'fix_preview_link_on_draft' ); // Fired on the page with the posts table
+add_action('admin_footer-post.php', 'fix_preview_link_on_draft'); // Fired on post edit page
+add_action('admin_footer-post-new.php', 'fix_preview_link_on_draft'); // Fired on add new post page
+  
+
 /**
  * Customize the preview button in the WordPress admin to point to the headless client.
  *
@@ -71,14 +103,15 @@ function set_headless_preview_link( $link ) {
 	if (defined( 'WP_ENV' ) && 'LOCAL' === WP_ENV ) {
 		return 'http://localhost:4200/'
 			. '_preview/'
-            . wp_get_post_parent_id(get_the_id()) . '/'
+      . get_the_id() . '/'
 			. wp_create_nonce( 'wp_rest' );
 	} else {
 		return 'https://<your_production_url>/'
 			. '_preview/'
-			. get_the_ID() . '/'
+			. get_the_id() . '/'
 			. wp_create_nonce( 'wp_rest' );
 	}
 }
 
 add_filter( 'preview_post_link', 'set_headless_preview_link' );
+add_filter( 'preview_page_link', 'set_headless_preview_link' );
