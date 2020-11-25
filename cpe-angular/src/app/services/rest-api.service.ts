@@ -12,6 +12,10 @@ export class RestApiService {
     this.api_url = ( this.win.nativeWindow.api_settings ) ? this.win.nativeWindow.api_settings.root + 'wp/v2/' :  'http://localhost:8000/wp-json/wp/v2/';
   }
 
+  getPages() {
+    return this.http.get(this.api_url + 'pages')
+  }
+
   getPageById(page_id) {
     return this.http.get(this.api_url + 'pages/' + page_id)
   }

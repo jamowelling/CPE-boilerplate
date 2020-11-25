@@ -9,6 +9,5 @@ const concat  = require('concat');
         './dist/corteva-client-sandbox/main.js',
     ]
     await fs.ensureDir('angular-elements')
-    console.log('files')
     await concat(files,'angular-elements/hello-world-angular-element.js')
 })()
