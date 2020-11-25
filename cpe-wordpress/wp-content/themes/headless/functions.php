@@ -84,32 +84,6 @@ function set_headless_preview_link( $link ) {
 add_filter( 'preview_post_link', 'set_headless_preview_link' );
 
 add_action(
-<<<<<<< HEAD
-	'rest_api_init',
-	function () {
-
-		if ( ! function_exists( 'use_block_editor_for_post_type' ) ) {
-			require ABSPATH . 'wp-admin/includes/post.php';
-		}
-
-		// Surface all Gutenberg blocks in the WordPress REST API
-		$post_types = get_post_types_by_support( [ 'editor' ] );
-		foreach ( $post_types as $post_type ) {
-			if ( use_block_editor_for_post_type( $post_type ) ) {
-				register_rest_field(
-					$post_type,
-					'blocks',
-					[
-						'get_callback' => function ( array $post ) {
-							return parse_blocks( $post['content']['raw'] );
-						},
-					]
-				);
-			}
-		}
-	}
-);
-=======
     'rest_api_init',
     function () {
         if ( ! function_exists( 'use_block_editor_for_post_type' ) ) {
@@ -187,4 +161,3 @@ fa_custom_setup_cdn_webfont(
     'https://pro.fontawesome.com/releases/v5.10.0/css/all.css',
     'sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p'
 );
->>>>>>> b7b92849ad24db49d3bdcb7a4e6ec96d831bb0c6
