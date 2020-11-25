@@ -35,6 +35,7 @@ const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.b
 
 const {
 	Button,
+	BaseControl,
 	DateTimePicker,
 	Flex,
 	FlexItem,
@@ -153,31 +154,19 @@ registerBlockType( 'cgb/article-block', {
 					<div
 						style={ { height: 200, width: '100%', background: '#F5F5F5' } }
 					></div>
+					<BaseControl>
+						<p>
+							{
+								date ? moment( date ).format( 'll' ) : 'May 8, 1926'
+							}
+						</p>
 
-					<p
-						style={ {
-							fontFamily: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif',
-							fontSize: 13,
-							marginBottom: 8,
-						} }
-					>
-						{
-							date ? moment( date ).format( 'll' ) : 'May 8, 1926'
-						}
-					</p>
-
-					<h2
-						style={ {
-							fontFamily: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif',
-							marginTop: 8,
-							marginBottom: 8,
-						} }
-					>
-						{
-							title ? title : 'Article Title'
-						}
-					</h2>
-
+						<h2>
+							{
+								title ? title : 'Article Title'
+							}
+						</h2>
+					</BaseControl>
 					<div>
 						<Flex justify="start">
 							<FlexItem>
@@ -205,21 +194,17 @@ registerBlockType( 'cgb/article-block', {
 					</div>
 
 					<div>
-						<p
-							style={ {
-								fontFamily: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif',
-								fontSize: 13,
-								marginBottom: 8,
-							} }
-						>
-							{
-								description ? description									:
-									`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-								ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-								ullamco laboris...`
-							}
+						<BaseControl>
+							<p>
+								{
+									description ? description :
+										`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+									ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+									ullamco laboris...`
+								}
 
-						</p>
+							</p>
+						</BaseControl>
 					</div>
 
 					<Button
