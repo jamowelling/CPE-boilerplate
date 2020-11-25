@@ -1,0 +1,112 @@
+.image-content-block-container {
+  display: flex;
+  padding: 112px 40px;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+
+  @media (max-width: 768px) {
+    display: block;
+    padding: 28px 20px;
+    flex-direction: inherit;
+  }
+}
+
+.image-content-block-column {
+  flex: 1 1 0px;
+  margin: 0 50px;
+  position: relative;
+
+  @media (max-width: 768px) {
+    flex: inherit;
+    margin: 0 0px;
+  }
+}
+
+.image-content-block-icon {
+  margin-bottom: 20px;
+}
+
+.image-content-block-header {
+  color: #464A54;
+  font-family: "Helvetica Now Display", Helvetica;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 39px;
+  margin-bottom: 2px;
+}
+
+.image-content-block-sub-header {
+  color: #464A54;
+  font-family: "Helvetica Now Display", Helvetica;
+  font-size: 23px;
+  letter-spacing: 0;
+  line-height: 32px;
+  margin-bottom: 18px;
+}
+
+.image-content-block-body {
+  color: #464A54;
+  font-family: "Helvetica Now Text", Helvetica;
+  font-size: 13px;
+  letter-spacing: 0;
+  line-height: 22px;
+  margin-bottom: 33px;
+}
+
+.image-content-block-call-to-action {
+  display: inline-block;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #1A81E1 0%, #0072CE 100%);
+  color: #FFFFFF;
+  font-family: "Helvetica Now Text", Helvetica;
+  font-size: 13px;
+  letter-spacing: 0;
+  margin-bottom: 22px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+}
+
+.image-content-block-links {
+}
+
+.image-content-block-link-set {
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.image-content-block-link {
+  color: #459AFF;
+  font-family: "Helvetica Now Text", Helvetica;
+  font-size: 13px;
+  letter-spacing: 0;
+  line-height: 22px;
+  text-decoration: none;
+  margin-bottom: 20px;
+  margin-right: 40px;
+}
+
+.image-content-block-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+
+.image-content-block-video {
+  width: 100%;
+}
