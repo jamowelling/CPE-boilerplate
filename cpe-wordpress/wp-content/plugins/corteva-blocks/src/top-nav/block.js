@@ -28,13 +28,12 @@ const {
 } = wp.editor;
 registerBlockType( 'cgb/top-nav', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'Top Nav' ), // Block title.
+	title: __( 'CPE Top Nav' ), // Block title.
 	icon: 'menu', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+	category: 'corteva', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
 		__( 'corteva-blocks' ),
 		__( 'Top Nav' ),
-		__( 'create-guten-block' ),
 	],
 	// attributes and setAttributes is the gutenberg version of state and setState
 	attributes: {
