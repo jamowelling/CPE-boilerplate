@@ -18,19 +18,3 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 require_once plugin_dir_path( __FILE__ ) . 'src/init.php';
 
-/**
- * Enqueue block JavaScript and CSS for the editor
- */
-function my_block_plugin_editor_scripts() {
-	// Enqueue block editor JS
-	// TODO - currently a placeholder example until angular elements are set up
-    wp_enqueue_script(
-        'app-hello-world',
-        'http://127.0.0.1:8080/angular-elements/hello-world-angular-element.js',
-        array(),
-        '4.3.1',
-        true
-    );
-}
-// Hook the enqueue functions into the editor
-add_action( 'enqueue_block_editor_assets', 'my_block_plugin_editor_scripts' );
