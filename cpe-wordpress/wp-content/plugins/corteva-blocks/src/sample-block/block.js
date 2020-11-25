@@ -24,7 +24,9 @@ const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.b
  */
 const {
 	RichText,
-} = wp.editor;
+	title
+} = wp.blockEditor;
+console.log(wp.editor)
 registerBlockType( 'cgb/block-my-block', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'PE Sample Block' ), // Block title.
@@ -68,7 +70,9 @@ registerBlockType( 'cgb/block-my-block', {
 						// notice, rather than taking in an event as the first argument it takes in 'value' 
 						(value) => props.setAttributes({ inputValue: value })
 					}
-				/>	
+				/>
+				<title 
+					value={props.attributes.inputTitle}></title>	
 			</div>
 		);
 	},
@@ -88,6 +92,8 @@ registerBlockType( 'cgb/block-my-block', {
 			<div className={ props.className }>
 				<p>— Hello from the frontend.</p>
 				<p>{props.attributes.inputValue}</p>
+				<title 
+					value={props.attributes.inputTitle}></title>	
 			</div>
 		);
 	},

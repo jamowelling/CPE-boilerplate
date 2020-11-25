@@ -1,0 +1,37 @@
+<div class="image-content-block-container" [style.background]="backgroundColor"
+     [style.flex-direction]="flexDirection()">
+  <div class="image-content-block-column">
+    <img
+      #imageElement
+      [src]="imageSrc"
+      [style.cursor]="!isEmpty(video?.url) ? 'pointer' : 'inherit'"
+      (click)="!isEmpty(video?.url) ? imageClicked() : null"
+      alt=""
+      class="image-content-block-image"/>
+    <video #videoElement *ngIf="videoEnabled && !isEmpty(video?.url)" [controls]="false"
+           class="image-content-block-video">
+      <source [src]="video?.url" [type]="video?.mime" class="image-content-block-source"/>
+    </video>
+  </div>
+  <div class="image-content-block-column">
+    <div *ngIf="textContentIconEnabled && !isEmpty(textContentIcon)">
+      <i class="image-content-block-icon fa" [class]="textContentIcon"></i>
+    </div>
+    <div *ngIf="textContentHeadlineEnabled && !isEmpty(textContentHeadline)" [innerHTML]="textContentHeadline"
+         class="image-content-block-header"></div>
+    <div *ngIf="textContentSubHeadingEnabled && !isEmpty(textContentSubHeading)"
+         class="image-content-block-sub-header">{{textContentSubHeading}}</div>
+    <div *ngIf="textContentBodyEnabled && !isEmpty(textContentBody)"
+         class="image-content-block-body">{{textContentBody}}</div>
+    <a *ngIf="callToActionEnabled && !isEmpty(callToActionText)"
+       [style.background]="callToActionButtonColor"
+       [href]="callToActionLocation"
+       [style.color]="callToActionButtonTextColor"
+       class="image-content-block-call-to-action">{{callToActionText}}</a>
+    <div *ngIf="linksEnabled" class="image-content-block-links">
+      <div *ngFor="let linkSet of chunk(links, 2)" class="image-content-block-link-set">
+        <a *ngFor="let link of links" [href]="link.href" class="image-content-block-link">{{link.displayName}}</a>
+      </div>
+    </div>
+  </div>
+</div>

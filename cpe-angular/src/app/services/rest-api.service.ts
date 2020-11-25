@@ -17,6 +17,10 @@ export class RestApiService {
     return this.http.get(this.api_url);
   }
 
+  getPages() {
+    return this.http.get(this.api_url + 'pages')
+  }
+
   getPageById(page_id) {
     return this.http.get(this.api_url + 'pages/' + page_id);
   }
