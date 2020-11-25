@@ -27,6 +27,7 @@
     "@ungap/custom-elements": "^0.1.9",
     "concat": "^1.0.3",
     "fs-extra": "^9.0.1",
+    "ng-click-outside": "^7.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
@@ -37,7 +38,7 @@
     "@angular/compiler-cli": "~10.2.0",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^12.11.1",
+    "@types/node": "^14.14.10",
     "codelyzer": "^6.0.0",
     "husky": "^4.3.0",
     "jasmine-core": "~3.6.0",
