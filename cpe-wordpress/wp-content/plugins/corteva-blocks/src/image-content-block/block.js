@@ -109,7 +109,7 @@ const BACKGROUND_COLORS = [
 ];
 
 registerBlockType( 'cgb/image-content-block', {
-	title: __( 'Image Content Block' ),
+	title: __( 'CPE Image Content Block' ),
 	icon: 'cover-image',
 	category: 'corteva',
 	keywords: [
