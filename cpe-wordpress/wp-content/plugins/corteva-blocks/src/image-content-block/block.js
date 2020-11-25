@@ -20,8 +20,6 @@ const {
 	MediaUpload,
 } = wp.blockEditor;
 
-const ALLOWED_MEDIA_TYPES = [ 'video' ];
-
 const BACKGROUND_COLORS = [
 	{
 		color: '#0072ce',
@@ -120,109 +118,101 @@ registerBlockType( 'cgb/image-content-block', {
 	attributes: {
 		backgroundColor: {
 			type: 'string',
-			default: '#FFFFFF'
+		},
+		textContentIconEnabled: {
+			type: 'boolean',
 		},
 		textContentIcon: {
-			type: 'boolean',
+			type: 'string',
 		},
 		textContentHeadlineEnabled: {
 			type: 'boolean',
-			default: true,
 		},
 		textContentHeadline: {
 			type: 'string',
-			source: 'html',
-			selector: 'h1',
 		},
 		textContentSubHeadingEnabled: {
 			type: 'boolean',
-			default: true,
 		},
 		textContentSubHeading: {
 			type: 'string',
-			source: 'html',
-			selector: 'h5',
 		},
 		textContentBodyEnabled: {
 			type: 'boolean',
-			default: true,
 		},
 		textContentBody: {
 			type: 'string',
-			source: 'html',
-			selector: 'p',
-		},
-		callToActionEnabled: {
-			type: 'boolean',
-			default: true,
-		},
-		callToActionText: {
-			type: 'string',
-			default: 'Call To Action',
-		},
-		callToActionLocation: {
-			type: 'string',
-			default: '',
-		},
-		callToActionButtonColor: {
-			type: 'string',
-			default: '#0072ce',
-		},
-		callToActionButtonTextColor: {
-			type: 'string',
-			default: '#FFFFFF',
 		},
 		mediaAlignment: {
 			type: 'string',
 			default: 'left',
 		},
-		media: {
+		imageSrc: {
 			type: 'string',
-			source: 'attribute',
-			selector: 'img',
-			attribute: 'src',
 		},
-		src: {
-			type: 'string',
-			default: ''
+		videoEnabled: {
+			type: 'boolean',
 		},
 		video: {
-			type: 'string',
-			default: ''
-		},
-		inlineBlockStyle: {
 			type: 'object',
+			default: {
+				url: '',
+				mime: '',
+			}
+		},
+		callToActionEnabled: {
+			type: 'boolean',
+		},
+		callToActionText: {
+			type: 'string',
+		},
+		callToActionLocation: {
+			type: 'string',
+		},
+		callToActionButtonColor: {
+			type: 'string',
+		},
+		callToActionButtonTextColor: {
+			type: 'string',
+		},
+		linksEnabled: {
+			type: 'boolean',
+		},
+		links: {
+			type: 'array',
+			default: [{
+				href: '',
+				displayName: '',
+			}],
 		}
 	},
 	edit: ( props ) => {
-		const containerStyle = {
-			border: 'black solid 1px',
-			width: '100%',
-			'border-radius': '2px',
-			background: props.attributes.backgroundColor,
-		};
-		const flexContainerStyle = {
-			display: 'flex',
-		};
-		const flexChildrenStyle = {
-			'flex-grow': 1,
-		};
-		props.attributes.inlineBlockStyle = {
-			display: 'inline-flex',
-			margin: 0,
-			border: 0,
-			cursor: 'pointer',
-			'-webkit-appearance': 'none',
-			background: 'none',
-			transition: 'box-shadow 0.1s linear',
-			'align-items': 'center',
-			'box-sizing': 'border-box',
-			padding: '6px 12px',
-			'border-radius': '4px',
-			'background-color': props.attributes.callToActionButtonColor,
-			color: props.attributes.callToActionButtonTextColor,
-			'text-decoration': 'none',
-		};
+		const {
+			attributes: {
+				backgroundColor,
+				textContentIconEnabled,
+				textContentIcon,
+				textContentHeadlineEnabled,
+				textContentHeadline,
+				textContentSubHeadingEnabled,
+				textContentSubHeading,
+				textContentBodyEnabled,
+				textContentBody,
+				mediaAlignment,
+				imageSrc,
+				videoEnabled,
+				video,
+				callToActionEnabled,
+				callToActionText,
+				callToActionLocation,
+				callToActionButtonColor,
+				callToActionButtonTextColor,
+				linksEnabled,
+				links,
+			},
+			setAttributes,
+		} = props;
+
 		return (
 			<div>
 				<InspectorControls>
@@ -233,8 +223,8 @@ registerBlockType( 'cgb/image-content-block', {
 								label="Background Color">
 								<ColorPalette
 									colors={ BACKGROUND_COLORS }
-									value={ props.attributes.backgroundColor }
-									onChange={ ( color ) => props.setAttributes( { backgroundColor: color } ) }
+									value={ backgroundColor }
+									onChange={ ( color ) => setAttributes( { backgroundColor: color } ) }
 								/>
 							</BaseControl>
 						</PanelRow>
@@ -242,172 +232,276 @@ registerBlockType( 'cgb/image-content-block', {
 					<PanelBody title="Text Content" initialOpen={ false }>
 						<ToggleControl
 							label="Toggle Icon"
-							checked={ props.attributes.textContentIcon }
-							onChange={ boolean => props.setAttributes( { textContentIcon: boolean } ) }
+							checked={ textContentIconEnabled }
+							onChange={ boolean => setAttributes( { textContentIconEnabled: boolean } ) }
 						/>
+						{
+							textContentIconEnabled ?
+								<TextControl
+									label="Icon"
+									value={ textContentIcon }
+									onChange={ value => setAttributes( { textContentIcon: value } ) }
+								/>
+								: ''
+						}
 						<ToggleControl
 							label="Toggle Headline"
-							checked={ props.attributes.textContentHeadlineEnabled }
-							onChange={ boolean => props.setAttributes( { textContentHeadlineEnabled: boolean } ) }
+							checked={ textContentHeadlineEnabled }
+							onChange={ boolean => setAttributes( { textContentHeadlineEnabled: boolean } ) }
 						/>
+						{
+							textContentHeadlineEnabled ?
+								<TextControl
+									label="Headline"
+									value={ textContentHeadline }
+									onChange={ value => setAttributes( { textContentHeadline: value }) }
+								/>
+								: ''
+						}
 						<ToggleControl
 							label="Toggle Sub Heading"
-							checked={ props.attributes.textContentSubHeadingEnabled }
-							onChange={ boolean => props.setAttributes( { textContentSubHeadingEnabled: boolean } ) }
+							checked={ textContentSubHeadingEnabled }
+							onChange={ boolean => setAttributes( { textContentSubHeadingEnabled: boolean } ) }
 						/>
+						{
+							textContentSubHeadingEnabled ?
+								<TextControl
+									label="Sub Heading"
+									value={ textContentSubHeading }
+									onChange={ value => setAttributes( { textContentSubHeading: value }) }
+								/>
+								: ''
+						}
 						<ToggleControl
 							label="Toggle Body"
-							checked={ props.attributes.textContentBodyEnabled }
-							onChange={ boolean => props.setAttributes( { textContentBodyEnabled: boolean } ) }
+							checked={ textContentBodyEnabled }
+							onChange={ boolean => setAttributes( { textContentBodyEnabled: boolean } ) }
 						/>
+						{
+							textContentBodyEnabled ?
+								<TextControl
+									label="Body"
+									value={ textContentBody }
+									onChange={ value => setAttributes( { textContentBody: value }) }
+								/>
+								: ''
+						}
 					</PanelBody>
 					<PanelBody title="Media Content" initialOpen={ false }>
 						<RadioControl
 							label="Media Alignment"
-							selected={ props.attributes.mediaAlignment }
+							selected={ mediaAlignment }
 							options={
 								[
 									{ label: 'Left', value: 'left' },
 									{ label: 'Right', value: 'right' },
 								]
 							}
-							onChange={ value => props.setAttributes( { mediaAlignment: value } ) }
+							onChange={ value => setAttributes( { mediaAlignment: value } ) }
 						/>
+						<BaseControl label="Image Content">
+							<MediaUploadCheck>
+								<MediaUpload
+									onSelect={ ( media ) => { setAttributes( { imageSrc: media.url } ) } }
+									allowedTypes={ [ "image" ] }
+									render={ ( { open } ) => (
+										<Button onClick={ open } isPrimary icon="insert">
+											Upload Image Content
+										</Button>
+									) }
+								/>
+							</MediaUploadCheck>
+						</BaseControl>
+						<BaseControl label="Video Content">
+							<ToggleControl
+								label="Enable Video Content"
+								checked={ videoEnabled }
+								onChange={ value => setAttributes( { videoEnabled: value } ) }
+							/>
+							{
+								videoEnabled ?
+									<MediaUploadCheck>
+										<MediaUpload
+											onSelect={ ( media ) => { setAttributes( { video: media } ); } }
+											allowedTypes={ [ "video" ] }
+											render={ ( { open } ) => (
+												<Button onClick={ open } isPrimary icon="insert">
+													Upload Video Content
+												</Button>
+											) }
+										/>
+									</MediaUploadCheck>
+									: ''
+							}
+						</BaseControl>
 					</PanelBody>
 					<PanelBody title="Call To Action" initialOpen={ false }>
 						<ToggleControl
 							label="Enable Call To Action"
-							checked={ props.attributes.callToActionEnabled }
-							onChange={ value => props.setAttributes( { callToActionEnabled: value } ) }
+							checked={ callToActionEnabled }
+							onChange={ value => setAttributes( { callToActionEnabled: value } ) }
 						/>
 						<TextControl
 							label="Text"
-							value={ props.attributes.callToActionText }
-							onChange={ value => props.setAttributes( { callToActionText: value } ) }
+							value={ callToActionText }
+							onChange={ value => setAttributes( { callToActionText: value } ) }
 						/>
 						<TextControl
 							label="Link"
-							value={ props.attributes.callToActionLocation }
-							onChange={ value => props.setAttributes( { callToActionLocation: value } ) }
+							value={ callToActionLocation }
+							onChange={ value => setAttributes( { callToActionLocation: value } ) }
 						/>
 						<BaseControl
 							label="Background Color">
 							<ColorPalette
 								colors={ BACKGROUND_COLORS }
-								value={ props.attributes.callToActionButtonColor }
-								onChange={ ( color ) => props.setAttributes( { callToActionButtonColor: color } ) }
+								value={ callToActionButtonColor }
+								onChange={ ( color ) => setAttributes( { callToActionButtonColor: color } ) }
 							/>
 						</BaseControl>
 						<BaseControl
 							label="Text Color">
 							<ColorPalette
 								colors={ BACKGROUND_COLORS }
-								value={ props.attributes.callToActionButtonTextColor }
-								onChange={ ( color ) => props.setAttributes( { callToActionButtonTextColor: color } ) }
+								value={ callToActionButtonTextColor }
+								onChange={ ( color ) => setAttributes( { callToActionButtonTextColor: color } ) }
 							/>
 						</BaseControl>
 					</PanelBody>
 					<PanelBody title="Links" initialOpen={ false }>
+						<ToggleControl
+							label="Links Enabled"
+							checked={ linksEnabled }
+							onChange={ boolean => setAttributes( { linksEnabled: boolean } ) }
+						/>
+						{
+							linksEnabled ?
+								links.map((link, index) => {
+									return <BaseControl label={ "Link " + (index + 1) }>
+										<TextControl
+											label="Link"
+											value={ links[index].link }
+											onChange={
+												value => {
+													links[index] = {
+														href: value,
+														displayName: links[index].text,
+													}
+													setAttributes( { links: [...links] } );
+												}
+											}
+										/>
+										<TextControl
+											label="Display Text"
+											value={ links[index].text }
+											onChange={
+												value => {
+													links[index] = {
+														href: links[index].link,
+														displayName: value,
+													}
+													setAttributes( { links: [...links] } );
+												}
+											}
+										/>
+										<Button isSecondary onClick={ () => {
+											links.splice(index, 1);
+											setAttributes( { links: [...links] })
+										} }>Remove Link</Button>
+									</BaseControl>
+								})
+								: ''
+						}
+						{
+							linksEnabled ?
+								<Button isPrimary onClick={ () => {
+									let newLinks = [...links, { href: '', displayName: '' }];
+									setAttributes( { links: newLinks })
+								} }>Add Link</Button>
+								: ''
+						}
 					</PanelBody>
 				</InspectorControls>
-
+				<div>General</div>
+				<div>Background Color: {backgroundColor}</div>
+				<div>Text Content</div>
 				{
-					props.attributes.mediaAlignment === 'left' ?
-						<div style={containerStyle}>
-							<app-hello-world title={props.attributes.textContentHeadline}>
-
-							</app-hello-world>
-							<div style={flexContainerStyle}>
-								<div style={flexChildrenStyle}>
-									<MediaUploadCheck>
-										<MediaUpload
-											onSelect={ ( media ) => { props.attributes.src = media.url } }
-											allowedTypes={ ALLOWED_MEDIA_TYPES }
-											render={ ( { open } ) => (
-												<Button onClick={ open }>
-													Select Image
-												</Button>
-											) }
-										/>
-									</MediaUploadCheck>
-									<div style={flexChildrenStyle}>
-										<img src={props.attributes.src} />
-									</div>
-								</div>
-								<div style={flexChildrenStyle}>
-									{
-										props.attributes.textContentHeadlineEnabled ?
-											<RichText
-												key="textContentHeadline"
-												tagName="h1"
-												onChange={ value => props.setAttributes( { textContentHeadline: value } ) }
-												value={ props.attributes.textContentHeadline }
-												placeholder="Headline"
-											/> : ''
-									}
-									{
-										props.attributes.textContentSubHeadingEnabled ?
-											<RichText
-												key="textContentSubHeading"
-												tagName="h5"
-												onChange={ value => props.setAttributes( { textContentSubHeading: value } ) }
-												value={ props.attributes.textContentSubHeading }
-												placeholder="Sub Heading"
-											/> : ''
-									}
-									{
-										props.attributes.textContentBodyEnabled ?
-											<RichText
-												key="textContentBody"
-												tagName="p"
-												onChange={ value => props.setAttributes( { textContentBody: value } ) }
-												value={ props.attributes.textContentBody }
-												placeholder="Body"
-											/> : ''
-									}
-									{
-										props.attributes.callToActionEnabled ?
-											<a style={
-												props.attributes.inlineBlockStyle
-											} href={ '#' }>{ props.attributes.callToActionText }</a>
-											: ''
-									}
-								</div>
-							</div>
+					textContentIconEnabled ?
+						<div>Icon: <i className={`fas ${textContentIcon}`} /></div>
+						: ''
+				}
+				{
+					textContentHeadlineEnabled ?
+						<div>Headline:</div>
+					: ''
+				}
+				{
+					textContentHeadlineEnabled ?
+						<RichText
+							autoFocus="false"
+							value={textContentHeadline}
+							placeholder="Headline"
+							onChange={
+								(value) => setAttributes({textContentHeadline: value})
+							}/>
+						: ''
+				}
+				{
+					textContentSubHeadingEnabled ?
+						<div>Sub Heading: {textContentSubHeading}</div>
+					: ''
+				}
+				{
+					textContentBodyEnabled ?
+						<div>Body: {textContentBody}</div>
+					: ''
+				}
+				<div>Media Content</div>
+				<div>Alignment: {mediaAlignment}</div>
+				<div>Image: <img src={imageSrc} alt/></div>
+				{
+					videoEnabled ?
+						<div>Video:
+							<video controls>
+								<source src={video.url} type={video.mime} />
+							</video>
 						</div>
-						:
-						<div></div>
-						//radio right side
+					: ''
+				}
+				{
+					callToActionEnabled ?
+						<div>
+							<div>Call To Action</div>
+							<div>Button Text: {callToActionText}</div>
+							<div>Button Link: {callToActionLocation}</div>
+							<div>Background Color: {callToActionButtonColor}</div>
+							<div>Text Color: {callToActionButtonTextColor}</div>
+						</div>
+					: ''
+				}
+				{
+					linksEnabled ?
+						<div>
+							<div>Links</div>
+							{
+								links.map((link, index) => {
+									return <div>
+										<div>Link {index + 1}</div>
+										<div>Link: { links[index].href }</div>
+										<div>Display Text: { links[index].displayName }</div>
+									</div>;
+								})
+							}
+						</div>
+						: ''
 				}
 			</div>
 		);
 	},
 	save: ( props ) => {
-		props.attributes.inlineBlockStyle = {
-			display: 'inline-flex',
-			margin: 0,
-			border: 0,
-			cursor: 'pointer',
-			'-webkit-appearance': 'none',
-			background: 'none',
-			transition: 'box-shadow 0.1s linear',
-			'align-items': 'center',
-			'box-sizing': 'border-box',
-			padding: '6px 12px',
-			'border-radius': '4px',
-			'background-color': props.attributes.callToActionButtonColor,
-			color: props.attributes.callToActionButtonTextColor,
-			'text-decoration': 'none',
-		};
 		return (
 			<div className={ props.className }>
-				<app-hello-world title={props.attributes.textContentHeadline}>
-
-				</app-hello-world>
-				<h1>{props.attributes.textContentHeadline}</h1>
-				<h5>{props.attributes.textContentSubHeading}</h5>
-				<p>{props.attributes.textContentBody}</p>
-				<a style={ props.attributes.inlineBlockStyle }>{props.attributes.textContentBody}</a>
+				<p>Saved Image Content Block</p>
 			</div>
 		);
 	},
