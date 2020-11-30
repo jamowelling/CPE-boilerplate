@@ -10,22 +10,6 @@ import './editor.scss';
 import './style.scss';
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
-/**
- * Register: aa Gutenberg Block.
- *
- * Registers a new block provided a unique name and an object defining its
- * behavior. Once registered, the block is made editor as an option to any
- * editor interface where blocks are implemented.
- *
- * @link https://wordpress.org/gutenberg/handbook/block-api/
- * @param  {string}   name     Block name.
- * @param  {Object}   settings Block settings.
- * @return {?WPBlock}          The block, if it has been successfully
- *                             registered; otherwise `undefined`.
- */
-const {
-	RichText,
-} = wp.editor;
 registerBlockType( 'cgb/top-nav', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'CPE Top Nav' ), // Block title.
@@ -39,14 +23,14 @@ registerBlockType( 'cgb/top-nav', {
 	attributes: {
 		searchEnabled: {
 			type: 'boolean',
-			default: true
+			default: true,
 		},
 		links: {
 			type: 'array',
-			default: new Array(6).fill({
+			default: new Array( 6 ).fill( {
 				displayName: '',
-				url: '',
-			}),
+				href: '',
+			} ),
 		},
 	},
 	/**
@@ -61,55 +45,52 @@ registerBlockType( 'cgb/top-nav', {
 	 * @returns {Mixed} JSX Component.
 	 */
 	edit: ( props ) => {
-
 		const toggleSearch = () => {
 			const { attributes, setAttributes } = props;
-			console.log({ attributes, setAttributes });
-			setAttributes({
-				searchEnabled: !attributes.searchEnabled
-			});
-
-		}
+			setAttributes( {
+				searchEnabled: ! attributes.searchEnabled,
+			} );
+		};
 
 		return (
 			<div className={ props.className }>
 				<h4>Global Header (Top Nav)</h4>
 				<label>
-					<input onClick={toggleSearch} type='checkbox' checked={props.attributes.searchEnabled} />
+					<input onClick={ toggleSearch } type="checkbox" checked={ props.attributes.searchEnabled } />
 					Text Search
 				</label>
 				<ul>
 					{
-						props.attributes.links.map((link, idx) => {
-							return <li>
-								<div>{idx + 1}</div>
+						props.attributes.links.map( ( link, idx ) => {
+							return <li key={ link.displayName }>
+								<div>{ idx + 1 }</div>
 								<TextControl
 									label="Display Name"
-									value={props.attributes.links[idx].displayName}
-									onChange={newValue => props.setAttributes({ links: [
-										...props.attributes.links.slice(0,idx),
+									value={ props.attributes.links[ idx ].displayName }
+									onChange={ newValue => props.setAttributes( { links: [
+										...props.attributes.links.slice( 0, idx ),
 										{
-											...props.attributes.links[idx],
+											...props.attributes.links[ idx ],
 											displayName: newValue,
 										},
-										...props.attributes.links.slice(idx+1),
-									]})}
+										...props.attributes.links.slice( idx + 1 ),
+									] } ) }
 								/>
 								<TextControl
 									label="URL or slug"
-									value={props.attributes.links[idx].url}
-									onChange={newValue => props.setAttributes({ links: [
-										...props.attributes.links.slice(0,idx),
+									value={ props.attributes.links[ idx ].href }
+									onChange={ newValue => props.setAttributes( { links: [
+										...props.attributes.links.slice( 0, idx ),
 										{
-											...props.attributes.links[idx],
-											url: newValue,
+											...props.attributes.links[ idx ],
+											href: newValue,
 										},
-										...props.attributes.links.slice(idx+1),
-									]})}
+										...props.attributes.links.slice( idx + 1 ),
+									] } ) }
 									help="External links should include the full URL (e.g. https://www.google.com). Links to other pages in the Product Explore should be everything after the base url (e.g. products for www.example.com/products)"
 								/>
-							</li>
-						})
+							</li>;
+						} )
 					}
 				</ul>
 			</div>

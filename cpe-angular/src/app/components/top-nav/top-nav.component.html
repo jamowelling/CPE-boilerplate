@@ -18,7 +18,7 @@
   </form>
   <ul class="cpe-header__links-list">
     <li class="cpe-header__links-list__item" *ngFor="let link of links">
-      <a [href]="link.url">
+      <a [href]="link.href">
         {{ link.displayName}}
       </a>
     </li>
@@ -40,7 +40,7 @@
 <div [ngClass]="drawerClass" class="cpe-nav-drawer">
   <ul class="cpe-header__links-list">
     <li class="cpe-header__links-list__item" *ngFor="let link of links">
-      <a [href]="link.url">
+      <a [href]="link.href">
         {{ link.displayName}}
       </a>
     </li>

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Link } from 'src/app/model';
 import { RestApiService } from 'src/app/services/rest-api.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { RestApiService } from 'src/app/services/rest-api.service';
   styleUrls: ['./top-nav.component.scss'],
 })
 export class TopNavComponent {
-  @Input() links: any[];
+  @Input() links: Link[];
   public searchTerm: string;
 
   public drawerClass = {
