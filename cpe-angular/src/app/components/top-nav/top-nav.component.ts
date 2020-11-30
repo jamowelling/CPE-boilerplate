@@ -8,7 +8,15 @@ import { RestApiService } from 'src/app/services/rest-api.service';
   styleUrls: ['./top-nav.component.scss'],
 })
 export class TopNavComponent {
-  @Input() links: Link[];
+  private _links: Link[];
+  @Input() set links(links: Link[]) {
+    this._links = links.filter((link) => {
+      return link.displayName && link.href;
+    });
+  }
+  get links(): Link[] {
+    return this._links;
+  }
   public searchTerm: string;
 
   public drawerClass = {

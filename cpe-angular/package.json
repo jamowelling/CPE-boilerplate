@@ -27,6 +27,7 @@
     "@ungap/custom-elements": "^0.1.9",
     "concat": "^1.0.3",
     "fs-extra": "^9.0.1",
+    "karma-viewport": "^1.0.7",
     "ng-click-outside": "^7.0.1",
     "node-html-parser": "^2.0.0",
     "rxjs": "~6.6.0",
