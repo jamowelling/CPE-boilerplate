@@ -12,13 +12,15 @@ import { RestApiService } from './services/rest-api.service';
 import { PageComponent } from './components/page/page.component';
 import { PreviewComponent } from './components/preview/preview.component';
 import { ImageContentBlockComponent } from './components/image-content-block/image-content-block.component';
+import { FeaturedTeamMemberComponent } from './components/featured-team-member/featured-team-member.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageComponent,
     PreviewComponent,
-    ImageContentBlockComponent
+    ImageContentBlockComponent,
+    FeaturedTeamMemberComponent
   ],
   imports: [
     BrowserModule,

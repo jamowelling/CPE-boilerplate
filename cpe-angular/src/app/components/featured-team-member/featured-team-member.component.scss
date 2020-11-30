@@ -1,0 +1,118 @@
+.featured-team-member-block-container {
+  display: flex;
+  padding: 0 40px;
+  flex-direction: row;
+  justify-content: space-around;
+  background: linear-gradient(180deg, #C4C9D4 0%, #95A0B4 100%);
+  background-position-y: 10px;
+  background-repeat: no-repeat;
+  height: 100%;
+
+  @media (max-width: 768px) {
+    display: block;
+    flex-direction: column;
+  }
+}
+
+.featured-team-member-block-column {
+  flex: 1 1 0px;
+  margin: 0 50px;
+  position: relative;
+
+  @media (max-width: 768px) {
+    flex: inherit;
+    margin: 0 0;
+  }
+}
+
+.featured-team-member-block-image {
+  width: 499px;
+  max-width: 100%;
+}
+
+.featured-team-member-block-image-caption {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.featured-team-member-block-image-caption-header {
+  color: #FFFFFF;
+  font-family: "Helvetica Now Display", Helvetica;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: 39px;
+
+  @media (max-width: 768px) {
+    font-size: 11px;
+    line-height: 14px;
+  }
+}
+
+.featured-team-member-block-image-caption-text {
+  color: #FFFFFF;
+  font-family: "Helvetica Now Display", Helvetica;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 39px;
+
+  @media (max-width: 768px) {
+    font-size: 11px;
+    line-height: 14px;
+  }
+}
+
+.featured-team-member-block-text-content {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+  @media (max-width: 768px) {
+    margin: inherit;
+    position: inherit;
+    top: inherit;
+    -ms-transform: inherit;
+    transform: inherit;
+    padding-top: 40px;
+    padding-bottom: 58px;
+  }
+}
+
+.featured-team-member-block-h1 {
+  color: #FFFFFF;
+  font-family: "Helvetica Now Display", Helvetica;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: 39px;
+}
+
+.featured-team-member-block-h2 {
+  color: #464A54;
+  font-family: "Helvetica Now Display", Helvetica;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+
+.featured-team-member-block-h3 {
+  color: #464A54;
+  font-family: "Helvetica Now Micro", Helvetica;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 18px;
+}
+
+.featured-team-member-block-description {
+  margin-top: 35px;
+  color: #FFFFFF;
+  font-family: "Helvetica Now Text", Helvetica;
+  font-size: 13px;
+  letter-spacing: 0;
+  line-height: 22px;
+}

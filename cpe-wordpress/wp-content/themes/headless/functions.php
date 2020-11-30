@@ -87,11 +87,11 @@ function angular_remove_redirect() {
       });
     </script>';
   }
-  
+
 add_action( 'admin_footer-edit.php', 'fix_preview_link_on_draft' ); // Fired on the page with the posts table
 add_action('admin_footer-post.php', 'fix_preview_link_on_draft'); // Fired on post edit page
 add_action('admin_footer-post-new.php', 'fix_preview_link_on_draft'); // Fired on add new post page
-  
+
 
 /**
  * Customize the preview button in the WordPress admin to point to the headless client.
@@ -142,6 +142,7 @@ add_action(
 
 add_filter( 'allowed_block_types', function() {
     return array(
+        'cgb/featured-team-member',
         'cgb/image-content-block',
     );
 });

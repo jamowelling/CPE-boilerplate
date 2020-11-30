@@ -1,0 +1,25 @@
+<div class="featured-team-member-block-container">
+  <div class="featured-team-member-block-column">
+    <div class="featured-team-member-block-image-caption">
+      <div class="featured-team-member-block-image-caption-header">
+        Featured
+      </div>
+      <div class="featured-team-member-block-image-caption-text">
+        Team Member
+      </div>
+    </div>
+    <img [src]="imageSrc" alt="" class="featured-team-member-block-image"/>
+  </div>
+  <div class="featured-team-member-block-column">
+    <div class="featured-team-member-block-text-content">
+      <div *ngIf="textContentH1Enabled && !isEmpty(textContentH1)" [innerHTML]="textContentH1"
+           class="featured-team-member-block-h1"></div>
+      <div *ngIf="textContentH2Enabled && !isEmpty(textContentH2)" [innerHTML]="textContentH2"
+           class="featured-team-member-block-h2"></div>
+      <div *ngIf="textContentH3Enabled && !isEmpty(textContentH3)" [innerHTML]="textContentH3"
+           class="featured-team-member-block-h3"></div>
+      <div *ngIf="textContentDescriptionEnabled && !isEmpty(textContentDescription)"
+           class="featured-team-member-block-description">{{textContentDescription}}</div>
+    </div>
+  </div>
+</div>

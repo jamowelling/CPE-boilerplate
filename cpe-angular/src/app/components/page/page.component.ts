@@ -3,6 +3,7 @@ import { RestApiService } from 'src/app/services/rest-api.service';
 import { ActivatedRoute } from '@angular/router';
 import {ImageContentBlockComponent} from "../image-content-block/image-content-block.component";
 import {Block} from "../../model";
+import {FeaturedTeamMemberComponent} from "../featured-team-member/featured-team-member.component";
 
 @Component({
   selector: 'app-page-component',
@@ -45,6 +46,9 @@ export class PageComponent implements OnInit {
         switch (this.pascalCase(block.blockName.replace('cgb/', '')) + 'Component') {
           case 'ImageContentBlockComponent':
             factory = this.resolver.resolveComponentFactory(ImageContentBlockComponent);
+            break;
+          case 'FeaturedTeamMemberComponent':
+            factory = this.resolver.resolveComponentFactory(FeaturedTeamMemberComponent);
             break;
         }
         Object.assign(this.container.createComponent(factory).instance, block.attrs);
