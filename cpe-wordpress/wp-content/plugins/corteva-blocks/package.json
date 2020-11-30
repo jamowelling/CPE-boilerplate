@@ -8,6 +8,8 @@
     "eject": "cgb-scripts eject"
   },
   "dependencies": {
+    "@wordpress/components": "^11.1.1",
+    "@wordpress/compose": "^3.22.0",
     "cgb-scripts": "1.23.1"
   }
 }

@@ -143,6 +143,7 @@ add_action(
 add_filter( 'allowed_block_types', function() {
     return array(
         'cgb/image-content-block',
+        'cgb/top-nav',
     );
 });
 

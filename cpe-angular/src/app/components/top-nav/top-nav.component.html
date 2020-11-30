@@ -1,0 +1,54 @@
+<!-- Desktop Header Template -->
+<header class="cpe-header--desktop">
+  <div>
+    <img class="right-up" src="../../../assets/rightUp.svg" />
+    <div class="cpe-header__title">
+      <img class="corteva-logo" src="../../../assets/white.svg" />
+      <span id="logo-divider"></span>
+      <span id="product-span">Product</span>
+      <span id="explorer-span">Explorer</span>
+    </div>
+  </div>
+  <img class="color-bar" src="../../../assets/colorBars.svg" />
+  <form autocomplete="off" (submit)="searchByTerm($event)" (clickOutside)="clickAwayFromSearch()" class="cpe-header__search">
+    <input placeholder="What are you looking for?" type="text" class="cpe-header__search__input" [ngClass]="textInputClass" name="search" [(ngModel)]="searchTerm">
+    <span id="search-icon" (click)="clickSearch()">
+      <app-search-svg [fillColor]="searchIconColor" (mouseenter)="mouseEnterSearch()" (mouseleave)="mouseLeaveSearch()" ></app-search-svg>
+    </span>
+  </form>
+  <ul class="cpe-header__links-list">
+    <li class="cpe-header__links-list__item" *ngFor="let link of links">
+      <a [href]="link.href">
+        {{ link.displayName}}
+      </a>
+    </li>
+  </ul>
+</header>
+
+<!-- Mobile Header Template -->
+<header class="cpe-header--mobile">
+  <img class="right-up" src="../../../assets/rightUp.svg" />
+  <img class="corteva-logo" src="../../../assets/white.svg" />
+  <img class="color-bar" src="../../../assets/colorBars-mobile.svg" />
+  <button class="cpe-header__btn hamburger-menu" (click)="toggleNavDrawer()">
+    <img [ngClass]="drawerClass" class="hamburger-menu__hamburger-icon" src="../../../assets/hamburgerNavIcon.svg" />
+    <img [ngClass]="drawerClass" class="hamburger-menu__exit-icon" src="../../../assets/exitIcon.svg" />
+  </button>
+</header>
+
+<!-- Nav Drawer -->
+<div [ngClass]="drawerClass" class="cpe-nav-drawer">
+  <ul class="cpe-header__links-list">
+    <li class="cpe-header__links-list__item" *ngFor="let link of links">
+      <a [href]="link.href">
+        {{ link.displayName}}
+      </a>
+    </li>
+  </ul>
+  <form autocomplete="off" (submit)="searchByTerm($event)" class="cpe-header__search">
+    <input placeholder="What are you looking for?" type="text" class="cpe-header__search__input" name="search" [(ngModel)]="searchTerm">
+    <span id="search-icon">
+      <app-search-svg [fillColor]="searchIconColor" (mouseenter)="mouseEnterSearch()" (mouseleave)="mouseLeaveSearch()" ></app-search-svg>
+    </span>
+  </form>
+</div>
