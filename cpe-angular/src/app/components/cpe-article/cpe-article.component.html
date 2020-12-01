@@ -1,248 +1,326 @@
 <p>cpe-article works!</p>
-<div
-    style="display: flex; width: 100%; align-items: flex-start;"
+
+<section
 >
     <div
-        style="width: 33.33%; margin: 0 auto"
+    style="
+    display: grid;
+    align-items: center;
+    /* grid-template-columns: repeat(3, minmax(427px, 1fr)); */
+    grid-template-columns: repeat(auto-fit, minmax(427px, 1fr));
+
+">
+    <article 
+        style="
+            border: 1px solid rgba(0, 0, 0, 0.8);
+        "
     >
-        <div style="padding: 30px">
-            
+        <div 
+            style="margin: 0 auto; width: 427px; border: 1px solid blue"
+        >
+                <!-- Hero Image -->
             <div
                 style="height: 215px; width: 100%; background: '#F5F5F5'"
             ></div>
-
-            <p
-                class="date"
-            >
-                May 8, 1926
-            </p>
-            <p>{{backgroundColor}}</p>
-
-            <h2
-                class="title"
-            >
-            Article Title
-            </h2>
-
-            <div class="tag-container">
-                <div class="col">
-                        <button
-                            class="rectangle events"
-                        >
-                            Events
-                        </button>
-                    </div>
-
-                    <div class="col">
-
-                        <button
-                            class="rectangle events"
-                        >
-                            Spotlight
-                        </button>
-
-                    </div>
-                    <div class="col">
-
-                        <button
-                            class="rectangle events"
-                        >
-                            News
-                        </button>
-                    </div>
-
-            </div>
-
-            <div>
+            
+            <!-- Body -->
+            <div class="container">
                 <p
-                    style="
-                        font-family: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif';
-                        font-size: 13;
-                        margin-bottom: 8;
-                    "
+                    class="date"
                 >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                    ullamco laboris...
+                    May 8, 1926
                 </p>
+
+                <h2
+                    class="title"
+                >
+                Article Title
+                </h2>
+
+                <div class="tag-container">
+                    <div class="col">
+                            <button
+                                class="rectangle events"
+                            >
+                                Events
+                            </button>
+                        </div>
+
+                        <div class="col">
+
+                            <button
+                                class="rectangle events"
+                            >
+                                Spotlight
+                            </button>
+
+                        </div>
+                        <div class="col">
+
+                            <button
+                                class="rectangle events"
+                            >
+                                News
+                            </button>
+                        </div>
+
+                </div>
+
+                <div>
+                    <p
+                        class="description-copy"
+                    >
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                        ullamco laboris...
+                    </p>
+                </div>
+
+                <a
+                    href='#'
+                    class="text-button learn-more"
+                    isPrimary
+                >
+                    CTA Button
+                </a>
             </div>
-
-            <Button
-                class="text-button learn-more"
-                isPrimary
-            >
-                CTA Button
-            </Button>
         </div>
-    </div>
+    </article>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- NEW -->
-    <div
-    style="width: 33.33%; margin: 0 auto"
->
-    <div style="padding: 30px">
-        
-        <div
-            style="height: 215px; width: 100%; background: '#F5F5F5'"
-        ></div>
-
-        <p
-            style="
-                font-family: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif';
-                font-size: 13;
-                margin-bottom: 8;
-            "
+    <article 
+        style="
+            border: 1px solid rgba(0, 0, 0, 0.8);
+        "
+    >
+        <div 
+            style="margin: 0 auto; width: 427px; border: 1px solid blue"
         >
-            May 8, 1926
-        </p>
+                <!-- Hero Image -->
+            <div
+                style="height: 215px; width: 100%; background: '#F5F5F5'"
+            ></div>
+            
+            <!-- Body -->
+            <div class="container">
+                <p
+                    class="date"
+                >
+                    May 8, 1926
+                </p>
 
-        <h2
-            class="title"
-        >
-        Article Title
-        </h2>
+                <h2
+                    class="title"
+                >
+                Article Title
+                </h2>
 
-        <div>
+                <div class="tag-container">
+                    <div class="col">
+                            <button
+                                class="rectangle events"
+                            >
+                                Events
+                            </button>
+                        </div>
 
-                    <button
-                        isSecondary
+                        <div class="col">
+
+                            <button
+                                class="rectangle events"
+                            >
+                                Spotlight
+                            </button>
+
+                        </div>
+                        <div class="col">
+
+                            <button
+                                class="rectangle events"
+                            >
+                                News
+                            </button>
+                        </div>
+
+                </div>
+
+                <div>
+                    <p
+                        class="description-copy"
                     >
-                        Events
-                    </button>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                        ullamco laboris...
+                    </p>
+                </div>
 
-                    <button
-                        isSecondary
-                    >
-                        Spotlight
-                    </button>
-
-                    <button
-                        isSecondary
-                    >
-                        News
-                    </button>
-
+                <a
+                    href='#'
+                    class="text-button learn-more"
+                    isPrimary
+                >
+                    CTA Button
+                </a>
+            </div>
         </div>
-
-        <div>
-            <p
-                style="
-                    font-family: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif';
-                    font-size: 13;
-                    margin-bottom: 8;
-                "
-            >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                ullamco laboris...
-            </p>
-        </div>
-
-        <Button
-            isPrimary
+    </article>
+    <article 
+        style="
+            border: 1px solid rgba(0, 0, 0, 0.8);
+        "
+    >
+        <div 
+            style="margin: 0 auto; width: 427px; border: 1px solid blue"
         >
-            CTA Button
-        </Button>
-    </div>
-</div>
+                <!-- Hero Image -->
+            <div
+                style="height: 215px; width: 100%; background: '#F5F5F5'"
+            ></div>
+            
+            <!-- Body -->
+            <div class="container">
+                <p
+                    class="date"
+                >
+                    May 8, 1926
+                </p>
 
-<!-- New -->
+                <h2
+                    class="title"
+                >
+                Article Title
+                </h2>
 
-<div
-style="width: 33.33%; margin: 0 auto"
->
-<div style="padding: 30px">
+                <div class="tag-container">
+                    <div class="col">
+                            <button
+                                class="rectangle events"
+                            >
+                                Events
+                            </button>
+                        </div>
+
+                        <div class="col">
+
+                            <button
+                                class="rectangle events"
+                            >
+                                Spotlight
+                            </button>
+
+                        </div>
+                        <div class="col">
+
+                            <button
+                                class="rectangle events"
+                            >
+                                News
+                            </button>
+                        </div>
+
+                </div>
+
+                <div>
+                    <p
+                        class="description-copy"
+                    >
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                        ullamco laboris...
+                    </p>
+                </div>
+
+                <a
+                    href='#'
+                    class="text-button learn-more"
+                    isPrimary
+                >
+                    CTA Button
+                </a>
+            </div>
+        </div>
+    </article>
+ 
+    <article 
+        style="
+            border: 1px solid rgba(0, 0, 0, 0.8);
+        "
+    >
+        <div 
+            style="margin: 0 auto; width: 427px; border: 1px solid blue"
+        >
+                <!-- Hero Image -->
+            <div
+                style="height: 215px; width: 100%; background: '#F5F5F5'"
+            ></div>
+            
+            <!-- Body -->
+            <div class="container">
+                <p
+                    class="date"
+                >
+                    May 8, 1926
+                </p>
+
+                <h2
+                    class="title"
+                >
+                Article Title
+                </h2>
+
+                <div class="tag-container">
+                    <div class="col">
+                            <button
+                                class="rectangle events"
+                            >
+                                Events
+                            </button>
+                        </div>
+
+                        <div class="col">
+
+                            <button
+                                class="rectangle events"
+                            >
+                                Spotlight
+                            </button>
+
+                        </div>
+                        <div class="col">
+
+                            <button
+                                class="rectangle events"
+                            >
+                                News
+                            </button>
+                        </div>
+
+                </div>
+
+                <div>
+                    <p
+                        class="description-copy"
+                    >
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                        ullamco laboris...
+                    </p>
+                </div>
+
+                <a
+                    href='#'
+                    class="text-button learn-more"
+                    isPrimary
+                >
+                    CTA Button
+                </a>
+            </div>
+        </div>
+    </article>
+
     
-    <div
-        style="height: 215px; width: 100%; background: '#F5F5F5'"
-    ></div>
-
-    <p
-        style="
-            font-family: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif';
-            font-size: 13;
-            margin-bottom: 8;
-        "
-    >
-        May 8, 1926
-    </p>
-
-    <h2
-        class=""
-        style="
-            font-family: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif';
-            margin-top: 8;
-            margin-bottom: 8;
-        "
-    >
-    Article Title
-    </h2>
-
-    <div>
-
-                <button
-                    isSecondary
-                >
-                    Events
-                </button>
-
-                <button
-                    isSecondary
-                >
-                    Spotlight
-                </button>
-
-                <button
-                    isSecondary
-                >
-                    News
-                </button>
-
-    </div>
-
-    <div>
-        <p
-            style="
-                font-family: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif';
-                font-size: 13;
-                margin-bottom: 8;
-            "
-        >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-            ullamco laboris...
-        </p>
-    </div>
-
-    <Button
-        isPrimary
-    >
-        CTA Button
-    </Button>
-</div>
-</div>
-</div>
+ 
+  
+</div> 
+</section>

@@ -21,6 +21,7 @@ require_once plugin_dir_path( __FILE__ ) . 'src/init.php';
 /**
  * Enqueue block JavaScript and CSS for the editor
  */
+
 function my_block_plugin_editor_scripts() {
 	// Enqueue block editor JS
 	// TODO - currently a placeholder example until angular elements are set up
@@ -48,3 +49,20 @@ function enqueue_frontend() {
 }
 
 add_action( 'wp_enqueue_scripts', 'enqueue_frontend' );
+//  ===== 
+
+// Hook the enqueue functions into the editor
+add_action( 'enqueue_block_editor_assets', 'my_block_plugin_editor_scripts' );
+
+function corteva_blocks_cgb_block_categories( $categories, $post ) {
+	return array_merge(
+		array(
+			array(
+				'slug' => 'corteva',
+				'title' => __( 'Corteva', 'corteva_blocks_cgb' ),
+			),
+		),
+		$categories
+	);
+}
+add_filter( 'block_categories', 'corteva_blocks_cgb_block_categories', 10, 2 );
